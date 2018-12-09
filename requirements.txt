@@ -1,0 +1,10 @@
+# rdkit seems to be a conda install thing, I am only using it on servers
+# rdkit
+bokeh
+ipython
+matplotlib
+networkx
+numpy
+pandas
+seaborn
+umap
