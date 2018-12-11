@@ -15,11 +15,15 @@ It can be used to search in the DTP (developmental therapeutics program) open ch
 
 **.sdf**: file type (*s*tructure-*d*ata *f*ile) that can be read by RDKit
 
+**PASS** The program PASS (Prediction of Activity Spectra for Substances) was used to calculate predictions for up to 565 different activities for nearly all the structures in the database. PASS calculates the probability for both activity and inactivity of the compound for a given mechanism. These comprise specific enzymatic inhibitory potencies, therapeutic uses for various diseases, toxicities, and others. Counting the activity and inactivity predictions separately (they can be searched for separately), a total of 64,188,212 predicted values are offered on this site. Because the training set that underlies PASS is large but still limited (on the order of 35,000 compounds), the program cannot reliably predict each activity for every compound in the database.
+
 ### Datafiles
 
 * `Chem2D_Jun2016.zip` can be unzipped to reveal the full Open compound dataset
 * `DIV5_*` are for the Diversity Set V
 * `NSC_PubChemSID.csv` contains the mapping from NSC ids to Pubchem-searchable SID's
+* `all_nci_pass_data.sdf` contains all the feature data available from the cactus link below
+
 
 ### Links:
 https://dtp.cancer.gov/databases_tools/data_search_instructions.htm
@@ -32,6 +36,7 @@ https://dtp.cancer.gov/organization/dscb/obtaining/default.htm
 
 https://pubchem.ncbi.nlm.nih.gov/
 
+https://cactus.nci.nih.gov/ncidb2.2/
 
 ### Some helpful commands
 
