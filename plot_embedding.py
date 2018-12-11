@@ -8,11 +8,12 @@ import pandas as pd
 import umap
 
 sns.set(style='white', rc={'figure.figsize': (14, 10)})
-graph2vec_embedding_path = 'data/embeddings/degree_4/nci_open_training_data_dims_256_epochs_10_lr_0.3_embeddings.txt'
+dims_epochs_prefix = 'dims_128_epochs_10'
+prefix = 'deg_4_' + dims_epochs_prefix
+graph2vec_embedding_path = 'data/embeddings/degree_4/nci_open_training_data_{}_lr_0.3_embeddings.txt'.format(dims_epochs_prefix)
 nsc_ids_path = 'data/div5_nsc_ids.txt'
 num_atoms_path = 'data/num_atoms_to_nsc.csv'
 
-prefix = 'deg_3_dims_256_epochs_100'
 
 
 def get_div5_binary_labels(embedding_data_dict, div5_nsc_ids_df):
@@ -32,6 +33,7 @@ def get_nsc_id_from_path(path):
     return int(no_extensions)
 
 
+# TODO increase DPI of saved images (280k points needs slightly higher quality)
 def plot_with_colorbar(embedding, values_for_coloring, path, label=''):
     # cmap will generate a tuple of RGBA values for a given number in the range 0.0 to 1.0
     # (also 0 to 255 - not used in this example).
@@ -67,6 +69,8 @@ def filter_by_num_atoms(embedding_data_dict, num_atoms_df):
     return graph_embedding_data
 
 
+# TODO: save embedding (json, pickle) so that I can redo plots with the same embedding coordinates
+# TODO: don't recompute embedding in this filtered step
 def plot_filtered_umap_embedding(embedding_data_dict, num_atoms_df, path):
     filtered_num_atoms = [x for x in num_atoms_df['num_atoms'].values if x < 50]
     graph_embedding_data = filter_by_num_atoms(embedding_data_dict, num_atoms_df)
@@ -92,13 +96,15 @@ def load_data():
 
 def remake_plots():
     embedding_data_dict, umap_embedding, nsc_ids, is_div5, num_atoms_df = load_data()
-    plot_div5(umap_embedding, is_div5, path='plots/molecular_umap_with_div5.png')
-    plot_with_colorbar(umap_embedding, num_atoms_df['num_atoms'].values, 'plots/num_atoms_colorbar.png', label='Number of Atoms')
-    plot_with_colorbar(umap_embedding, nsc_ids, 'plots/molecular_umap_nsc_colorbar.png', label='NSC ID')
-    plot_filtered_umap_embedding(embedding_data_dict, num_atoms_df, path='plots/num_atoms_le_50.png')
+    plot_div5(umap_embedding, is_div5, path='plots/{}_molecular_umap_with_div5.png'.format(prefix))
+    # plot_with_colorbar(umap_embedding, num_atoms_df['num_atoms'].values, 'plots/{}_num_atoms_colorbar.png'.format(prefix), label='Number of Atoms')
+    plot_with_colorbar(umap_embedding, nsc_ids, 'plots/{}_molecular_umap_nsc_colorbar.png'.format(prefix), label='NSC ID')
+    plot_filtered_umap_embedding(embedding_data_dict, num_atoms_df, path='plots/{}_num_atoms_le_50.png'.format(prefix))
     # num_atoms stuff
     # plt.hist([x for x in num_atoms_df['num_atoms'].values if x < 50])
     # plt.savefig('plots/num_atoms_hist_ge_50.png')
     return embedding_data_dict, umap_embedding, nsc_ids, is_div5, num_atoms_df
 
 # embedding_data_dict, umap_embedding, nsc_ids, is_div5, num_atoms_df = remake_plots()
+# k = 50000
+# write_bokeh_plot(embedding_data_dict, umap_embedding, nsc_ids, is_div5, num_atoms_df, k=k, output_filepath='{}_{}_hover_plot_is_div5.html'.format(k, prefix))

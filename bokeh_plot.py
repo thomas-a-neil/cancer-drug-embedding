@@ -100,3 +100,7 @@ def write_continuous_bokeh_plot(embedding_data_dict, umap_embedding, nsc_ids, is
         size=4
     )
     show(plot_figure)
+
+# some helpful commands
+# k = 50000
+# write_bokeh_plot(embedding_data_dict, umap_embedding, nsc_ids, is_div5, num_atoms_df, k=k, output_filepath='{}_{}_hover_plot_is_div5.html'.format(k, prefix))
