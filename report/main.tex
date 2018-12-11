@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{graphicx}
+% \usepackage[demo]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{subcaption}
+
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+  #1\ignorespaces
+}
+\usepackage[style=numeric-comp,backend=bibtex]{biblatex}
+\bibliography{refs.bib} %Imports bibliography file
+
+\title{Exploring molecular embeddings for cancer drug screening}
+\date{\today}
+\author{Neil Thomas}
+
+\begin{document}
+\maketitle
+
+
+\include{intro}
+\include{methods}
+\include{results}
+\include{discussion}
+
+\section{Conclusion}
+
+The results outlined in this work show that even naive notions of connectivity already show some important trends in chemical function. In the future, we hope that the molecular embedding explored in this work procedures could be used by the National Cancer Institute to recommend optimal Diversity Sets for larger compound sets, or to inform molecular queries for researchers looking for similar structures to ones that they find to have therapeutic function.
+
+\clearpage
+\printbibliography
+\end{document}

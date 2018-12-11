@@ -1,0 +1,92 @@
+\section{Results}
+
+\subsection{Chemical Compound Dataset}
+284,176 chemical compounds were downloaded from the National Cancer Institute (NCI) Developmental Therapeutics Program (DTP).\footnote{\url{https://wiki.nci.nih.gov/display/NCIDTPdata/Chemical+Data} June 2016 Release} These compounds correspond to the NCI Open Set: a large set of compounds provided for research purposes, with little experimental data associated with them. Predicted activity for the compounds in the Open Set was extracted from the Cactus NCI Database Browser.\footnote{\url{https://cactus.nci.nih.gov/ncidb2.2/}} These predicted activities (e.g. water-octanol partition coefficient, mutagenicity) are computed using Prediction of Activity Spectra for Substances (PASS) \cite{Lagunin2000}, a method trained on around 30,000 biologically active compounds which uses shared ``Multilevel Neighborhood of Atoms'' (akin to subgraphs) to infer properties of compounds not in the training set.
+
+In addition, the Diversity Set, a strict subset of the Open Set totalling 1593 compounds, was downloaded from the NCI.\footnote{\url{https://wiki.nci.nih.gov/display/NCIDTPdata/Compound+Sets} Diversity Set V} The Diversity Set corresponds to compounds which were selected to represent the structural diversity present in the Open Set. They were selected via a greedy algorithm which uses defined ``pharmacophoric centers'' (structural motifs deemed biologically active). Iteratively, new compounds were added to the set if they had more than 5 new pharmacophores compared to the existing set. Though no journal references or code were found documenting the procedure, it is described on the NCI website.\footnote{\url{https://dtp.cancer.gov/organization/dscb/obtaining/available_plates.htm}}
+
+The Open Set was filtered to compounds that only contain elements present in the Diversity Set. Precisely, these elements were Arsenic, Bromine, Carbon, Chlorine, Fluorine, Iodine, Nitrogen, Oxygen, Phosphorous, and Sulpher. Hydrogens are implicitly in every structure, but they are not explicitly considered in the construction of subgraphs. Compounds were also filtered from the Open Set if they were not a single connected component (e.g. solute and solvent pair, or a salt). This filtered the total unlabeled compound set used for downstream analysis to 232,941 compounds.
+
+\subsection{Learning the Molecular Embedding}
+
+The set of compounds were converted into graphs and then used as training data. \textit{graph2vec} uses subgraphs of depth $k$ and smaller as its ``vocabulary'' for prediction. Maximum depth vocabularies of subtree depth 3 and depth 4 were used. The size of the subtree vocabulary at depths 1, 2, 3, and 4 were 7, 126, 7877, and 113944, respectively. 128 and 256 dimensional embeddings were trained, each for 10 and 100 epochs of training with an exponentially decaying learning rate initialized at $0.3$. The models were trained on a Microsoft Azure NC6 GPU node (Tesla K80 GPU, 6 CPUs) and took between 6 hours (for degree 3 subgraphs) and 10 hours (for degree 4 subgraphs) for 100 epochs of training.
+
+\subsection{Visualizing the Embedding}
+
+After the embeddings were trained, they were visualized using UMAP, a ``topological'' dimensionality reduction method that is a much faster alternative to t-SNE\cite{McInnes2018}. Each embedding was visualized in 2 dimensions via UMAP, and colored by PASS predicted properties. To create meaningful colorations for these heavy tailed distributions (see Fig \ref{fig:histograms}), any compound in the 99th percentile and above was mapped to the same color, and the same for the 1st percentile and below. The visualized properties include: ``logP'', a predicted water-octanol partition coefficient, which is a proxy for hydrophobicity, an important component of whether compounds will pass through the cell membrane upon delivery, ``Weight'', the molecular weight, computed as the sum of the constituent atomic weights, and the predicted (via PASS) probabilities of activity in four classes of drug: Antiinflammatory, Carcinogenic, Immunostimulant, and Immunosuppressant. Where predicted property data was available for only a subset of the compounds, only that subset is plotted.
+
+These colorings, as seen in Figures \ref{fig:deg_3_dims_256_epochs_10}, \ref{fig:deg_3_dims_256_epochs_100}, \ref{fig:deg_4_dims_128_epochs_10}, \ref{fig:deg_4_dims_128_epochs_100}, reveal that these properties of chemical interest are not randomly distributed throughout the space, but rather show qualitatively meaningful clustering within the embedding space. This shows that structural similarity (as defined by our \textit{graph2vec} embedding) can act as a good proxy for chemical activity. More intriguing, are the appearance of multiple clusters of the same color, such as the yellow in Fig \ref{fig:deg_4_dims_128_epochs_100} (a), which implyp that such an embedding could be used to find \textit{dissimilar} structures with similar activity, potentially mediating different biological pathways.
+
+All of the cancer drug embeddings are available to the curious reader for interactive exploration at \url{https://people.eecs.berkeley.edu/~nthomas/embeddings.html}
+
+% histograms
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{../plots/pass_plots/deg_4_dims_128_epochs_100/E_LOGP_histogram.png}
+    \caption{logP}
+\end{subfigure}
+\begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{../plots/pass_plots/deg_4_dims_128_epochs_100/E_WEIGHT_histogram.png}
+    \caption{Weight}
+\end{subfigure}
+\caption{Histograms for predicted compound properties. These exhibit a heavy right skew.}
+\label{fig:histograms}
+\end{figure}
+
+\input{pass_subfigures}
+
+\subsubsection{Clustering within the Embedding Space}
+
+The interactive visualizations were used for qualitatively evaluating clustering within the embedding space. Some very strong connectivity motifs popped out early in training, as in Figure \ref{fig:tetrahedron}, where compounds with four fused 6-membered rings (Adamantane) were all mapped to similar positions. This motif has a very distinct 3-dimensional structure, shown in Figure \ref{fig:3dguy}, which bodes well for this type of embedding's ability to predict biological interaction (e.g. with proteins), which is mediated by spatial extent and stereochemistry. By 100 epochs the embedding has learned a lot of very tight clusters, as seen in Figure \ref{fig:deg4isdiv5}. Tight clusters in general correspond to identical graphs (ignoring the elemental node labels), some of which are enumerated in Figure \ref{fig:clusters_100}.
+
+In contrast to the tight clusters, the more diffuse clouds are difficult to interpret, and may correspond very loosely to the number of rings in the structure. The connectivity-based embedding may simply not hold enough information to reasonably disentagle the vast majority of compounds which inhabit the cloud.
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/10_epochs_tetrahedron.png}
+    \caption{10 epochs}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/fused_tetrahedron.png}
+    \caption{100 epochs}
+\end{subfigure}
+\caption{Adamantane clearly picked out as a signature as early as 10 epochs. UMAP 2D visualization of 128 dimensional embedding of degree 4 subgraphs. The small grey triangle at the border of the tooltip (hard to see) indicates the position of the cluster.}
+\label{fig:tetrahedron}
+\end{figure}
+
+\begin{figure}[h]
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=\linewidth]{../plots/cluster_examples/3d_tetrahedron_93164.png}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=\linewidth]{../plots/cluster_examples/2d_struct_93164.png}
+\end{subfigure}
+\caption{3D structure (left) and 2D structure (right) of a molecule (NSC ID: 93164) with the fused tetrahedron (Adamantane). A nice example of molecular graph connectivity that is indicative of unique 3D structure. 3D structure taken from DTP website.\protect\footnotemark}
+\label{fig:3dguy}
+\end{figure}
+
+\footnotetext{\url{https://dtp.cancer.gov/dtpstandard/servlet/Chem3D?testshortname=3D+chemical+structure&searchtype=NSC&searchlist=93164}}
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/2_elements.png}
+    \caption{Linear paths of length 3}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/fused_rings_and_doubled.png}
+    \caption{Fused rings with two \textit{para} groups}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/length_6_paths.png}
+    \caption{Linear paths of length 6}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\linewidth]{../plots/cluster_examples/ring_with_two.png}
+    \caption{Single ring with \textit{ortho} groups}
+\end{subfigure}
+\caption{Clusters found in the 128 dimensional embedding of degree 4 subgraphs trained for 100 epochs. The small grey triangle at the border of the tooltip (hard to see) indicates the position of the cluster. Of particular note are the fused rings with \textit{para} groups in (b) where the bottom example shows that a molecule with that motif appearing twice (with a small bridge in between) is mapped to similar vectors as molecules with the motif appearing once}
+\label{fig:clusters_100}
+\end{figure}
