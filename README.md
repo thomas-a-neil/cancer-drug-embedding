@@ -43,3 +43,5 @@ https://cactus.nci.nih.gov/ncidb2.2/
 ```
 python main.py --corpus /data/nci_open_training_data --embedding_size 256 --output_dir /data/graph2vec_embeddings/ --epochs 10
 ```
+
+graph2vec can be found at https://github.com/MLDroid/graph2vec_tf
