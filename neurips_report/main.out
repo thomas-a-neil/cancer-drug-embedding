@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Word Embeddings or word2vec}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Negative Sampling}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Document Embeddings or doc2vec}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Graph Embeddings or graph2vec}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Results}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Chemical Compound Dataset}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Learning the Molecular Embedding}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Visualizing the Embedding}{section.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Clustering within the Embedding Space}{subsection.3.3}% 11
+\BOOKMARK [1][-]{section.4}{Discussion}{}% 12
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 13
+\BOOKMARK [1][-]{section.6}{Supplemental Figures}{}% 14

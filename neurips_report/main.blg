@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: unsrtnat.bst
+A level-1 auxiliary file: intro.aux
+A level-1 auxiliary file: methods.aux
+A level-1 auxiliary file: results.aux
+A level-1 auxiliary file: discussion.aux
+A level-1 auxiliary file: supplement.aux
+Database file #1: refs.bib
+Warning--empty journal in Brookes2018
+Warning--empty journal in Goldberg2014
+Warning--empty journal in Narayanan
+Warning--empty year in Narayanan
+Warning--empty year in Narayanan
+Warning--empty journal in Le2014
+Warning--empty journal in McInnes2018
+You've used 12 entries,
+            2481 wiz_defined-function locations,
+            665 strings with 7979 characters,
+and the built_in function-call counts, 5466 in all, are:
+= -- 454
+> -- 366
+< -- 6
++ -- 134
+- -- 110
+* -- 490
+:= -- 926
+add.period$ -- 61
+call.type$ -- 12
+change.case$ -- 24
+chr.to.int$ -- 12
+cite$ -- 19
+duplicate$ -- 241
+empty$ -- 406
+format.name$ -- 130
+if$ -- 1122
+int.to.chr$ -- 1
+int.to.str$ -- 13
+missing$ -- 12
+newline$ -- 93
+num.names$ -- 36
+pop$ -- 86
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 142
+stack$ -- 0
+substring$ -- 179
+swap$ -- 45
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 7
+while$ -- 37
+width$ -- 0
+write$ -- 203
+(There were 7 warnings)

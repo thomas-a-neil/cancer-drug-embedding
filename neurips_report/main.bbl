@@ -1,0 +1,120 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brookes and Listgarten(2018)]{Brookes2018}
+David~H. Brookes and Jennifer Listgarten.
+\newblock {Design by adaptive sampling}.
+\newblock oct 2018.
+\newblock URL \url{http://arxiv.org/abs/1810.03714}.
+
+\bibitem[G{\'{o}}mez-Bombarelli et~al.(2018)G{\'{o}}mez-Bombarelli, Wei,
+  Duvenaud, Hern{\'{a}}ndez-Lobato, S{\'{a}}nchez-Lengeling, Sheberla,
+  Aguilera-Iparraguirre, Hirzel, Adams, and Aspuru-Guzik]{Gomez-Bombarelli2018}
+Rafael G{\'{o}}mez-Bombarelli, Jennifer~N. Wei, David Duvenaud,
+  Jos{\'{e}}~Miguel Hern{\'{a}}ndez-Lobato, Benjam{\'{i}}n
+  S{\'{a}}nchez-Lengeling, Dennis Sheberla, Jorge Aguilera-Iparraguirre,
+  Timothy~D. Hirzel, Ryan~P. Adams, and Al{\'{a}}n Aspuru-Guzik.
+\newblock {Automatic Chemical Design Using a Data-Driven Continuous
+  Representation of Molecules}.
+\newblock \emph{ACS Central Science}, 4\penalty0 (2):\penalty0 268--276, feb
+  2018.
+\newblock ISSN 23747951.
+\newblock \doi{10.1021/acscentsci.7b00572}.
+\newblock URL \url{http://pubs.acs.org/doi/10.1021/acscentsci.7b00572}.
+
+\bibitem[Goldberg et~al.(2014)Goldberg, Levy, Mikolov, Sutskever, Chen,
+  Corrado, and Dean]{Goldberg2014}
+Yoav Goldberg, Omer Levy, Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg
+  Corrado, and Jeffrey Dean.
+\newblock {word2vec Explained: Deriving Mikolov et al.'s Negative-Sampling
+  Word-Embedding Method The skip-gram model}.
+\newblock 2014.
+\newblock URL \url{https://arxiv.org/pdf/1402.3722.pdf}.
+
+\bibitem[Narayanan et~al.()Narayanan, Chandramohan, Venkatesan, Chen, Liu, and
+  Jaiswal]{Narayanan}
+Annamalai Narayanan, Mahinthan Chandramohan, Rajasekar Venkatesan, Lihui Chen,
+  Yang Liu, and Shantanu Jaiswal.
+\newblock {graph2vec: Learning Distributed Representations of Graphs}.
+\newblock \doi{10.1145/1235}.
+\newblock URL \url{https://arxiv.org/pdf/1707.05005.pdf}.
+
+\bibitem[Hamid and Friedberg(2018)]{Hamid2018}
+Md~Nafiz Hamid and Iddo Friedberg.
+\newblock {Identifying Antimicrobial Peptides using Word Embedding with Deep
+  Recurrent Neural Networks}.
+\newblock \emph{bioRxiv}, page 255505, jan 2018.
+\newblock \doi{10.1101/255505}.
+\newblock URL \url{https://www.biorxiv.org/content/early/2018/01/29/255505}.
+
+\bibitem[Asgari and Mofrad(2015)]{Asgari2015}
+Ehsaneddin Asgari and Mohammad~R.K. Mofrad.
+\newblock {Continuous distributed representation of biological sequences for
+  deep proteomics and genomics}.
+\newblock \emph{PLoS ONE}, 10\penalty0 (11):\penalty0 e0141287, nov 2015.
+\newblock ISSN 19326203.
+\newblock \doi{10.1371/journal.pone.0141287}.
+\newblock URL \url{http://dx.plos.org/10.1371/journal.pone.0141287}.
+
+\bibitem[Mikolov et~al.(2013)Mikolov, Corrado, Chen, and Dean]{Mikolov}
+Tomas Mikolov, Greg Corrado, Kai Chen, and Jeffrey Dean.
+\newblock {Efficient Estimation of Word Representations in Vector Space}.
+\newblock \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR 2013)}, pages 1--12, 2013.
+\newblock ISSN 15324435.
+\newblock \doi{10.1162/153244303322533223}.
+\newblock URL \url{http://arxiv.org/pdf/1301.3781v3.pdf}.
+
+\bibitem[Le and Mikolov(2014)]{Le2014}
+Quoc~V. Le and Tomas Mikolov.
+\newblock {Distributed Representations of Sentences and Documents}.
+\newblock may 2014.
+\newblock URL \url{http://arxiv.org/abs/1405.4053}.
+
+\bibitem[Shervashidze et~al.(2011)Shervashidze, Schweitzer, {Jan van Leeuwen},
+  Mehlhorn, and Borgwardt]{SchweitzerPASCAL2011}
+Nino Shervashidze, Pascal Schweitzer, Erik {Jan van Leeuwen}, Kurt Mehlhorn,
+  and Karsten~M Borgwardt.
+\newblock {Weisfeiler-Lehman Graph Kernels}.
+\newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2539--2561,
+  2011.
+\newblock ISSN 1532-4435.
+\newblock \doi{10.1.1.232.1510}.
+\newblock URL
+  \url{http://www.jmlr.org/papers/volume12/shervashidze11a/shervashidze11a.pdf}.
+
+\bibitem[Lagunin et~al.(2000)Lagunin, Stepanchikova, Filimonov, and
+  Poroikov]{Lagunin2000}
+A.~Lagunin, A.~Stepanchikova, D.~Filimonov, and V.~Poroikov.
+\newblock {PASS: prediction of activity spectra for biologically active
+  substances}.
+\newblock \emph{Bioinformatics}, 16\penalty0 (8):\penalty0 747--748, aug 2000.
+\newblock ISSN 1367-4803.
+\newblock \doi{10.1093/bioinformatics/16.8.747}.
+\newblock URL
+  \url{https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/16.8.747}.
+
+\bibitem[McInnes et~al.(2018)McInnes, Healy, and Melville]{McInnes2018}
+Leland McInnes, John Healy, and James Melville.
+\newblock {UMAP: Uniform Manifold Approximation and Projection for Dimension
+  Reduction}.
+\newblock feb 2018.
+\newblock URL \url{http://arxiv.org/abs/1802.03426}.
+
+\bibitem[Kang et~al.(2016)Kang, Hsu, Wu, Liu, Coster, Posner, Altschuler, and
+  Wu]{Kang2016}
+Jungseog Kang, Chien-Hsiang Hsu, Qi~Wu, Shanshan Liu, Adam~D Coster, Bruce~A
+  Posner, Steven~J Altschuler, and Lani~F Wu.
+\newblock {Improving drug discovery with high-content phenotypic screens by
+  systematic selection of reporter cell lines}.
+\newblock \emph{Nature Biotechnology}, 34\penalty0 (1):\penalty0 70--77, jan
+  2016.
+\newblock ISSN 1087-0156.
+\newblock \doi{10.1038/nbt.3419}.
+\newblock URL \url{http://www.nature.com/articles/nbt.3419}.
+
+\end{thebibliography}

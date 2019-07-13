@@ -1,0 +1,31 @@
+\section{Supplemental Figures}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/tree_height_2.png}
+\caption{Schematic showing the nodes reachable within two hops of the root node 1. Figure taken from \citet{SchweitzerPASCAL2011}.}
+\label{fig:tree}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{figs/paragraph2vec.png}
+\caption{Schematic of \textit{doc2vec} prediction taken from \citet{Le2014}. The document vector is used to predict words in a small window.}
+\label{doc2vec}
+\end{figure}
+
+% histograms
+\begin{figure}
+\centering
+\begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{../plots/pass_plots/deg_4_dims_128_epochs_100/E_LOGP_histogram.png}
+    \caption{logP}
+\end{subfigure}
+\begin{subfigure}{0.45\linewidth}
+    \includegraphics[width=\linewidth]{../plots/pass_plots/deg_4_dims_128_epochs_100/E_WEIGHT_histogram.png}
+    \caption{Weight}
+\end{subfigure}
+\caption{Histograms for predicted compound properties. These exhibit a heavy right skew.}
+\label{fig:histograms}
+\end{figure}
+
+\input{pass_subfigures}

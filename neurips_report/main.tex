@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[preprint]{nips_2018}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{subcaption}
+
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
+
+\title{Exploring molecular embeddings for cancer drug screening}
+\date{\today}
+\author{Neil Thomas}
+
+\begin{document}
+\maketitle
+
+\include{intro}
+\include{methods}
+\include{results}
+\include{discussion}
+
+\section{Conclusion}
+
+The results outlined in this work show that even naive notions of connectivity already show some important trends in chemical function. In the future, we hope that the molecular embedding explored in this work procedures could be used by the National Cancer Institute to recommend optimal Diversity Sets for larger compound sets, or to inform molecular queries for researchers looking for similar structures to ones that they find to have therapeutic function.
+
+\bibliography{refs}
+
+\clearpage
+\include{supplement}
+
+\end{document}
